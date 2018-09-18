@@ -16,6 +16,7 @@ class CreateDatasiswasTable extends Migration
         Schema::create('datasiswas', function (Blueprint $table) {
             $table->increments('id_siswa');
             $table->integer('id_kelas', 10);
+            $table->integer('id_piket', 10);
             $table->string('nama', 10);
             $table->enum('jenis_kelamin',['laki-laki', 'Perempuan']);
             $table->string('absen', 10);
