@@ -15,7 +15,7 @@ class CreateJadwalPiketsTable extends Migration
     {
         Schema::create('jadwal_pikets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_siswa', 30);
+            $table->integer('id_siswa');
             $table->string('hari', 30);
             $table->timestamps();
         });

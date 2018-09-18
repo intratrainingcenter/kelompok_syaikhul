@@ -14,8 +14,8 @@ class CreateAbsensTable extends Migration
     public function up()
     {
         Schema::create('absens', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_siswa', 10);
+            $table->increments('id_absen');
+            $table->integer('id_siswa');
             $table->string('lama', 10);
             $table->string('keterangan', 80);
             $table->timestamps();
