@@ -79,13 +79,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    LaraDK
                 </div>
 
                 <div class="links">
-                    {{--  <a href="{{ URL::route('coba.index') }}">Link Resource</a>  --}}
-                    {{--  <a href="/test">Link Biasa</a>
-                      --}}
+                    <a href="{{Route('indexresource.index')}}">Index Resource</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
         </div>
