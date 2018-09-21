@@ -52,10 +52,6 @@
     @include('master.footer')
   </footer>
 
-<!--   <aside class="control-sidebar control-sidebar-dark">
-    @include('master.sidebarheader')
-  </aside> -->
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 @yield('footer')
@@ -95,6 +91,6 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('template/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<!-- <script src="{{asset('template/dist/js/demo.js')}}"></script> -->
+<script src="{{asset('template/dist/js/demo.js')}}"></script>
 </body>
 </html>
