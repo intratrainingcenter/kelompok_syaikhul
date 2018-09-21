@@ -14,7 +14,7 @@ class piketController extends Controller
      */
     public function index()
     {   
-        $data_piket = jadwal_piket::all();
+        $data_piket = jadwal_piket::orderByDesc('created_at')->get();
 
         return view('piket/piket', compact('data_piket'));
     }
@@ -37,7 +37,13 @@ class piketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $insert = jadwal_piket::create([
+            'hari' => $request->hari ,
+            'created_at' => \Carbon\Carbon::now() 
+        ]);
+        
+        return redirect('piket');
     }
 
     /**
