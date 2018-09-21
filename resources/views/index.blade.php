@@ -52,10 +52,6 @@
     @include('master.footer')
   </footer>
 
-<!--   <aside class="control-sidebar control-sidebar-dark">
-    @include('master.sidebarheader')
-  </aside> -->
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 @yield('footer')
