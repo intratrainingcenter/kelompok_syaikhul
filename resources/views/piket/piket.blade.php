@@ -6,9 +6,6 @@
     aa
     @endif
     <div class="col-md-12">
-        <div>
-            <h2>Data piket</h2>
-        </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3>Data Piket</h3>
@@ -26,12 +23,53 @@
                         @foreach ($data_piket as $index => $data)
                         <tr>
                             <td>{{$index+1}}</td>
-                            <td>{{$data->hari }}</td>
+                            <td>{{$data->hari}}</td>
                             <td>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">hapus</button>
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#edit{{$data->id}}">Edit</button>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id}}">hapus</button>
                             </td>
                         </tr>
+
+                        <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Piket</h5>
+                                    </div>
+                                    {!! Form::open(['url' => '/piket/'.$data->id , 'method' => 'PATCH']) !!}
+                                    <div class="modal-body">
+                                        {!! Form::label('hari', 'Hari'); !!}
+                                        {!! Form::text('hari', $data->hari , ['class' => 'form-control' ]) !!}
+                                        <br>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                                    </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Delete Piket</h5>
+                                    </div>
+                                    {!! Form::open(['url' => '/piket/'.$data->id , 'method' => 'DELETE']) !!}
+                                    <div class="modal-body">
+                                        Apakah Anda Yakin Menghapus {{$data->hari}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        {!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+
                         @endforeach
                     </tbody>
                 </table>
@@ -47,10 +85,10 @@
             </div>
             <div class="panel-body">
                 {!! Form::open(['url' => '/piket']) !!}
-                    {!! Form::label('hari', 'Hari'); !!}
-                    {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket']) !!}
-                    <br>
-                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                {!! Form::label('hari', 'Hari'); !!}
+                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket']) !!}
+                <br>
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
                 {!! Form::close() !!}
             </div>

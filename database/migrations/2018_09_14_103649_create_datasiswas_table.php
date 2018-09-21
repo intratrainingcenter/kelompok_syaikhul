@@ -14,7 +14,7 @@ class CreateDatasiswasTable extends Migration
     public function up()
     {
         Schema::create('datasiswas', function (Blueprint $table) {
-            $table->increments('id_siswa');
+            $table->increments('id');
             $table->integer('id_kelas');
             $table->integer('id_piket');
             $table->string('nama', 10);
