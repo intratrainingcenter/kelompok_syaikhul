@@ -14,9 +14,6 @@
 Route::get('/', function () {
     return view('master.content');
 });
-Route::get('/kelas', function () {
-    return view('kelas.kelas');   
-});
 Route::get('/piket', function () {
     return view('piket.piket');
 });
@@ -30,3 +27,4 @@ Route::get('/absensi', function () {
     return view('absensi.absensi');
 });
 
+Route::resource('kelas','KelasController');
