@@ -26,7 +26,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        
+        // return view('kelas.input');
     }
 
     /**
@@ -37,7 +37,12 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = new kelas();
+        $insert->nama_kelas = $request->nama_kelas;
+        $insert->ruang     = $request->nama_ruang;
+        $insert->save();
+
+        return redirect('kelas');
     }
 
     /**
