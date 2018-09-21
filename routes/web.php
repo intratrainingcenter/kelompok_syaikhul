@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('piket', 'piketController');
+Route::get('/saya', 'Ckelas@index')->name('saya');
 Route::get('/', function () {
     return view('master.content');
 });
