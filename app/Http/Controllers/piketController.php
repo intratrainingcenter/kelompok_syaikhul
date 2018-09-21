@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\kelas;
+use App\jadwal_piket;
 
-
-class Ckelas extends Controller
+class piketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,10 @@ class Ckelas extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = kelas::all();
-        dd($data);
+    {   
+        $data_piket = jadwal_piket::all();
+
+        return view('piket/piket', compact('data_piket'));
     }
 
     /**
