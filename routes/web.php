@@ -10,16 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('piket', 'piketController');
+Route::get('/saya', 'Ckelas@index')->name('saya');
 Route::get('/', function () {
     return view('master.content');
 });
 Route::get('/kelas', function () {
     return view('kelas.kelas');   
 });
-Route::get('/piket', function () {
-    return view('piket.piket');
-});
+// Route::get('/piket', function () {
+//     return view('piket.piket');
+// });
 Route::get('/siswa', function () {
     return view('siswa.siswa');
 });
