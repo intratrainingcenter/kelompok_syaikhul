@@ -1,4 +1,5 @@
 @extends('index')
+@extends('piket/additional')
 @section('content')
 <div>
     <h2>Data piket</h2>
