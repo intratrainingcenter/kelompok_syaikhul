@@ -77,7 +77,12 @@ class piketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $update = jadwal_piket::find($id);
+        $update->hari = $request->hari;
+        $update->save();
+        
+        return redirect('piket');
     }
 
     /**
@@ -88,6 +93,8 @@ class piketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = jadwal_piket::destroy($id);
+        return redirect('piket');
+
     }
 }
