@@ -42,12 +42,20 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Edit Mapel</h5>
                                     </div>
-                                    {!! Form::open(['url' => '/Mapel/'.$data->id , 'method' => 'PATCH']) !!}
+                                    {!! Form::open(['url' => '/mapel/'.$data->id , 'method' => 'PATCH']) !!}
                                     <div class="modal-body">
                                         {!! Form::label('hari', 'Hari'); !!}
-                                        {!! Form::text('hari', $data->hari , ['class' => 'form-control' ]) !!}
+                                        {!! Form::text('hari', $data->hari , ['class' => 'form-control' , 'required' => 'required']) !!}
                                         <br>
-                                        
+                                        {!! Form::label('', 'Kelas'); !!}
+										{!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control', 'required' => 'required']); !!}
+										<br>
+                                        {!! Form::label('', 'Kode Pelajaran'); !!}
+                                        {!! Form::text('kode_pelajaran', $data->kode_pelajaran , ['class' => 'form-control' , 'required' => 'required']) !!}
+                                        <br>
+                                        {!! Form::label('', 'Pelajaran'); !!}
+                                        {!! Form::text('pelajaran', $data->pelajaran , ['class' => 'form-control' , 'required' => 'required']) !!}
+                                        <br>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,18 +100,18 @@
             <div class="panel-body">
                 {!! Form::open(['url' => '/mapel']) !!}
 				{!! Form::label('', 'Kelas'); !!}
-                {!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control']); !!}
+                {!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
 
 				<br>
 				{!! Form::label('hari', 'Hari'); !!}
-                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Hari ']) !!}
+                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Hari ', 'required' => 'required', 'required' => 'required']) !!}
 				<br>
 				{!! Form::label('kode_pelajaran', 'Kode Pelajaran'); !!}
-                {!! Form::text('kode_pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Kode Pelajaran ']) !!}
+                {!! Form::text('kode_pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Kode Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
 				<br>
 
 				{!! Form::label('', 'Pelajaran'); !!}
-                {!! Form::text('pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Pelajaran ']) !!}
+                {!! Form::text('pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
 
                 <br>
                 {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
