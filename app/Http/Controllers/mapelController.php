@@ -106,6 +106,7 @@ class mapelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = jadwal_pelajaran::destroy($id);
+        return redirect('mapel');
     }
 }
