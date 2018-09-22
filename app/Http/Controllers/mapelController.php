@@ -88,7 +88,14 @@ class mapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = jadwal_pelajaran::find($id);
+        $update->id_kelas = $request->id_kelas;
+        $update->hari = $request->hari;
+        $update->kode_pelajaran = $request->kode_pelajaran;
+        $update->pelajaran = $request->pelajaran;
+        $update->save();
+        
+        return redirect('mapel');
     }
 
     /**
