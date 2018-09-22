@@ -71,9 +71,9 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Delete Mapel</h5>
                                     </div>
-                                    {!! Form::open(['url' => '/Mapel/'.$data->id , 'method' => 'DELETE']) !!}
+                                    {!! Form::open(['url' => '/mapel/'.$data->id , 'method' => 'DELETE']) !!}
                                     <div class="modal-body">
-                                        Apakah Anda Yakin Menghapus {{$data->hari}}
+                                        Apakah Anda Yakin Menghapus {{$data->pelajaran}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
