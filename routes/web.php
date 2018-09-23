@@ -3,13 +3,9 @@
 Route::resource('kelas','KelasController');
 Route::resource('piket', 'piketController');
 Route::resource('mapel', 'mapelController');
+Route::resource('absensi','AbsensiController');
 
-Route::get('/siswa', function () {
-    return view('siswa.siswa');
-});
-Route::get('/absensi', function () {
-    return view('absensi.absensi');
-});
+
 Route::get('/', function () {
     return view('master.content');
 });

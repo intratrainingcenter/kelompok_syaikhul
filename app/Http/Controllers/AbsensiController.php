@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\kelas;
+use App\absen;
 
-class KelasController extends Controller
+class AbsensiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $data = kelas::all();
+        $data = absen::all();
 
-        return view('kelas.kelas',compact('data'));
+        return view('absensi.absensi',compact('data'));
     }
 
     /**
@@ -26,7 +26,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        // return view('kelas.input');
+        //
     }
 
     /**
@@ -37,12 +37,13 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $insert = new kelas();
-        $insert->nama_kelas = $request->nama_kelas;
-        $insert->ruang     = $request->nama_ruang;
+        $insert = new absen();
+        $insert->id_siswa   = $request->siswa;
+        $insert->lama       = $request->lama;
+        $insert->keterangan = $request->keterangan;
         $insert->save();
 
-        return redirect('kelas');
+        return redirect('absensi');
     }
 
     /**
@@ -64,7 +65,7 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -76,12 +77,7 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = kelas::find($id);
-        $update->nama_kelas = $request->nama_kelas;
-        $update->ruang = $request->nama_ruang;
-        $update->save();
-        
-        return redirect('kelas');
+        //
     }
 
     /**
@@ -92,7 +88,6 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        $delete = kelas::destroy($id);
-        return redirect('kelas');
+        //
     }
 }
