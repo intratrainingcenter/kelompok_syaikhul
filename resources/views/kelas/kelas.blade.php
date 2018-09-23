@@ -20,7 +20,7 @@
 					               {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
 					               {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
 					            </div>
-			                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
 			                {!! Form::close() !!}
 			            </div>
@@ -49,10 +49,36 @@
                   <td>{{$data->nama_kelas}}</td>
                   <td>{{$data->ruang}}</td>
                   <td>
-                  	<button class="btn btn-info">Edit</button>
+                  	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$data->id}}">Edit</button>
                   	<button class="btn btn-danger">hapus</button>
                   </td>
                 </tr>
+                  <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Kelas</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                      {!! Form::open(['route' => ['kelas.update',$data->id],'method' => 'PATCH']) !!}
+                                          <div class="form-grup">
+                                         {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control']) !!}
+                                      </div>
+                          
+                                          <div class="form-grup">
+                                         {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">kembali</button>
+                                      {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
+                                    </div>
+                                      {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
                   	@endforeach
                 </tbody>
               </table>
@@ -66,40 +92,6 @@
 	</div>
 
 
-	<!-- modal update -->
-
-	    <div class="modal modal-success fade" id="modal-success">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Form Edit</h4>
-              </div>
-              <div class="modal-body">
-                {!! Form::open(['route' => ['kelas.update']]) !!}
-                    <div class="form-grup">
-		               {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
-		               {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control']) !!}
-		            </div>
-		
-                    <div class="form-grup">
-		               {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
-		               {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
-		            </div>
-                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-
-                {!! Form::close() !!}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+	
 
 @endsection
