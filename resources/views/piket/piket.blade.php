@@ -39,7 +39,7 @@
                                     {!! Form::open(['url' => '/piket/'.$data->id , 'method' => 'PATCH']) !!}
                                     <div class="modal-body">
                                         {!! Form::label('hari', 'Hari'); !!}
-                                        {!! Form::text('hari', $data->hari , ['class' => 'form-control' ]) !!}
+                                        {!! Form::text('hari', $data->hari , ['class' => 'form-control' , 'required' => 'required']) !!}
                                         <br>
                                         
                                     </div>
@@ -86,7 +86,7 @@
             <div class="panel-body">
                 {!! Form::open(['url' => '/piket']) !!}
                 {!! Form::label('hari', 'Hari'); !!}
-                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket']) !!}
+                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket' , 'required' => 'required']) !!}
                 <br>
                 {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
