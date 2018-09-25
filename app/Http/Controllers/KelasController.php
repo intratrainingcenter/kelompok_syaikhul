@@ -64,7 +64,7 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -76,7 +76,12 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = kelas::find($id);
+        $update->nama_kelas = $request->nama_kelas;
+        $update->ruang = $request->nama_ruang;
+        $update->save();
+        
+        return redirect('kelas');
     }
 
     /**
@@ -87,6 +92,7 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = kelas::destroy($id);
+        return redirect('kelas');
     }
 }
