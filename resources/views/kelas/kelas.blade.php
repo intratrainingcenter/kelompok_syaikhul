@@ -12,14 +12,15 @@
 			            <div class="panel-body">
 			                {!! Form::open(['route' => 'kelas.index']) !!}
 			                    <div class="form-grup">
-					               {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('nama_kelas', 'Nama Kelas') !!}
 					               {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					            </div>
-					
+                                <br><br>
 			                    <div class="form-grup">
-					               {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('nama_ruang', 'Nama Ruang') !!}
 					               {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
-					            </div>
+                                </div>
+                                <br><br>
 			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
 			                {!! Form::close() !!}
@@ -62,12 +63,12 @@
                                       {!! Form::open(['route' => ['kelas.update',$data->id],'method' => 'PATCH']) !!}
                                     <div class="modal-body">
                                           <div class="form-grup">
-                                         {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('nama_kelas', 'Nama Kelas') !!}
                                          {!! Form::text('nama_kelas', $data->nama_kelas ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                         </div>
                           
                                           <div class="form-grup">
-                                         {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('nama_ruang', 'Nama Ruang') !!}
                                          {!! Form::text('nama_ruang', $data->ruang,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                           </div>
                                     </div>

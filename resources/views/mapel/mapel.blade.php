@@ -74,7 +74,7 @@
                                         {!! Form::text('hari', $data->hari , ['class' => 'form-control' , 'required' => 'required']) !!}
                                         <br>
                                         {!! Form::label('', 'Kelas'); !!}
-										{!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control', 'required' => 'required']); !!}
+										{!! Form::select('id_kelas', $selectkelas, $data->hari, [ 'class' => 'form-control', 'required' => 'required']); !!}
 										<br>
                                         {!! Form::label('', 'Kode Pelajaran'); !!}
                                         {!! Form::text('kode_pelajaran', $data->kode_pelajaran , ['class' => 'form-control' , 'required' => 'required']) !!}

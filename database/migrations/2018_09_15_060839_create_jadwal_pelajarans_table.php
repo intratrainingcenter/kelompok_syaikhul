@@ -17,6 +17,7 @@ class CreateJadwalPelajaransTable extends Migration
             $table->increments('id');
             $table->integer('id_kelas');
             $table->string('hari', 30);
+            $table->string('kode_pelajaran', 60);
             $table->string('pelajaran', 60);
             $table->timestamps();
         });

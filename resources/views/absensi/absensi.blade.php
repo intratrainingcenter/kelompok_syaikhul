@@ -12,21 +12,21 @@
 			            <div class="panel-body">
 			                {!! Form::open(['route' => 'absensi.index']) !!}
 			                    <div class="form-grup">
-					               {!! Form::label('NISN', 'NISN',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('NISN', 'NISN') !!}
 					               {!! Form::text('NISN', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					               </div>
-					
+                                   <br>
 			                   <div class="form-grup">
-                         {!! Form::label('lama', 'lama',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::label('lama', 'lama') !!}
                          {!! Form::text('lama', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                          </div>
-
+                         <br>
                          <div class="form-grup">
-					               {!! Form::label('keterangan', 'Keterangan',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('keterangan', 'Keterangan') !!}
 					               {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
-					               </div>
-			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
-
+                                   </div>
+                                   <br><br>
+                                {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 			                {!! Form::close() !!}
 			            </div>
 			        </div>
@@ -66,21 +66,20 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Edit Absensi</h5>
+                                        <h5 class="modal-title">Edit Absensi NISN {{$data->NISN}}</h5>
                                     </div>
                                       {!! Form::open(['route' => ['absensi.update',$data->id],'method' => 'put']) !!}
                                     <div class="modal-body">
                                           <div class="form-grup">
-                                            Edit NISN {{$data->NISN}}
-                                          </div><div class="form-grup">
-                                         {!! Form::label('lama', 'Lama',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('lama', 'Lama') !!}
                                          {!! Form::text('lama', $data->lama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                           </div>
                                           <div class="form-grup">
-                                           {!! Form::label('keterangan', 'Keterangan',['class' => 'col-sm-6 form-control']) !!}
+                                           {!! Form::label('keterangan', 'Keterangan') !!}
                                            {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], $data->keterangan,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                            </div>
                                     </div>
+                                    <br><br><br>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                       {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
@@ -99,6 +98,7 @@
                                     <div class="modal-body">
                                         Yakin Ingin Menghapus Absensi {{$data->NISN}}
                                     </div>
+                                    <br><br>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                         {!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}

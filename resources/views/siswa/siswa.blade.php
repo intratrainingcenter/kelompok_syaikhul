@@ -12,34 +12,35 @@
 			            <div class="panel-body">
 			                {!! Form::open(['route' => 'siswa.index']) !!}
 			                    <div class="form-grup">
-                         {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::label('nama_kelas', 'Nama Kelas') !!}
                          {!! Form::select('id_kelas', $selectclass, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                          </div>
-
+                         <br>
                          <div class="form-grup">
-                         {!! Form::label('piket', 'Piket',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::label('piket', 'Piket') !!}
                          {!! Form::select('piket', $selectpijket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                          </div>
-
+                         <br>
                          <div class="form-grup">
-					               {!! Form::label('NISN', 'NISN',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('NISN', 'NISN') !!}
 					               {!! Form::text('NISN', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					               </div>
-					
+                                   <br><br>
 			                    <div class="form-grup">
-                         {!! Form::label('nama', 'Nama',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::label('nama', 'Nama') !!}
                          {!! Form::text('nama', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                          </div>
-
+                         <br><br>
                          <div class="form-grup">
-                         {!! Form::label('jk', 'Jenis Kelamin',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::label('jk', 'Jenis Kelamin') !!}
                          {!! Form::select('jk', ['laki-laki' => 'laki-laki', 'Perempuan' => 'Perempuan'], '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                          </div>
-
+                         <br><br>
                          <div class="form-grup">
-					               {!! Form::label('absen', 'Absen',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('absen', 'Absen') !!}
 					               {!! Form::text('absen', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
-					               </div>
+                                   </div>
+                                   <br><br>
 			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
 			                {!! Form::close() !!}
@@ -90,32 +91,32 @@
                                       {!! Form::open(['route' => ['siswa.update',$data->id],'method' => 'PATCH']) !!}
                                     <div class="modal-body">
                                          <div class="form-grup">
-                                         {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('nama_kelas', 'Nama Kelas') !!}
                                           {!! Form::select('id_kelas', $selectclass, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                                          </div>
 
                                          <div class="form-grup">
-                                         {!! Form::label('piket', 'Piket',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('piket', 'Piket') !!}
                                          {!! Form::select('piket', $selectpijket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                                          </div>
 
                                          <div class="form-grup">
-                                         {!! Form::label('NISN', 'NISN',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('NISN', 'NISN') !!}
                                          {!! Form::text('NISN', $data->NISN ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                           
                                           <div class="form-grup">
-                                         {!! Form::label('nama', 'Nama',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('nama', 'Nama') !!}
                                          {!! Form::text('nama', $data->nama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
 
                                          <div class="form-grup">
-                                         {!! Form::label('jk', 'Jenis Kelamin',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('jk', 'Jenis Kelamin') !!}
                                          {!! Form::select('jk', ['laki-laki' => 'laki-laki', 'Perempuan' => 'Perempuan'], '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
 
                                          <div class="form-grup">
-                                         {!! Form::label('absen', 'Absen',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::label('absen', 'Absen') !!}
                                          {!! Form::text('absen', $data->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                                     </div>
