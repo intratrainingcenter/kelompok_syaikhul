@@ -13,7 +13,7 @@
                 {!! Form::label('hari', 'Hari'); !!}
                 {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket' , 'required' => 'required']) !!}
                 <br>
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
                 {!! Form::close() !!}
             </div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+                                        {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
                                     </div>
                                     {!! Form::close() !!}
                                 </div>
