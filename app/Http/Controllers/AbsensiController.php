@@ -14,7 +14,8 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $data = absen::all();
+        $data = absen::with('namesiswa')->get();
+        // dd($data);
 
         return view('absensi.absensi',compact('data'));
     }
@@ -38,7 +39,7 @@ class AbsensiController extends Controller
     public function store(Request $request)
     {
         $insert = new absen();
-        $insert->id_siswa   = $request->siswa;
+        $insert->NISN   = $request->NISN;
         $insert->lama       = $request->lama;
         $insert->keterangan = $request->keterangan;
         $insert->save();
@@ -77,7 +78,14 @@ class AbsensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        // dd($id);
+        $update = absen::find($id);
+        $update->lama       = $request->lama;
+        $update->keterangan = $request->keterangan;
+        $update->save();
+        
+        return redirect('absensi');
     }
 
     /**
@@ -88,6 +96,7 @@ class AbsensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = absen::destroy($id);
+        return redirect('absensi');
     }
 }

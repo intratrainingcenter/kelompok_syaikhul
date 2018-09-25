@@ -12,18 +12,18 @@
 			            <div class="panel-body">
 			                {!! Form::open(['route' => 'absensi.index']) !!}
 			                    <div class="form-grup">
-					               {!! Form::label('siswa', 'Nama siswa',['class' => 'col-sm-6 form-control']) !!}
-					               {!! Form::text('siswa', '' ,['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::label('NISN', 'NISN',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::text('NISN', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					               </div>
 					
 			                   <div class="form-grup">
                          {!! Form::label('lama', 'lama',['class' => 'col-sm-6 form-control']) !!}
-                         {!! Form::text('lama', '',['class' => 'col-sm-6 form-control']) !!}
+                         {!! Form::text('lama', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                          </div>
 
                          <div class="form-grup">
 					               {!! Form::label('keterangan', 'Keterangan',['class' => 'col-sm-6 form-control']) !!}
-					               {!! Form::text('keterangan', '',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					               </div>
 			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
@@ -40,7 +40,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Siswa</th>
+                  <th>NISN</th>
+                  <th>Nama siswa</th>
                   <th>Lama</th>
                   <th>keterangan</th>
                   <th>Opsi</th>
@@ -52,31 +53,33 @@
                 	<?php $no++ ;?>
                 <tr>
                   <td>{{$no}}</td>
-                  <td>{{$data->id_kelas}}</td>
-                  <td>{{$data->lama}}</td>
+                  <td>{{$data->NISN}}</td>
+                  <td>{{$data->namesiswa->nama}}</td>
+                  <td>{{$data->lama}} Hari</td>
                   <td>{{$data->keterangan}}</td>
                   <td>
                   	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$data->id}}">Edit</button>
                   	<button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id}}">hapus</button>
                   </td>
                 </tr>
-                  <!-- <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Edit Kelas</h5>
+                                        <h5 class="modal-title">Edit Absensi</h5>
                                     </div>
-                                      {!! Form::open(['route' => ['kelas.update',$data->id],'method' => 'PATCH']) !!}
+                                      {!! Form::open(['route' => ['absensi.update',$data->id],'method' => 'put']) !!}
                                     <div class="modal-body">
                                           <div class="form-grup">
-                                         {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
-                                         {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control']) !!}
-                                        </div>
-                          
-                                          <div class="form-grup">
-                                         {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
-                                         {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
+                                            Edit NISN {{$data->NISN}}
+                                          </div><div class="form-grup">
+                                         {!! Form::label('lama', 'Lama',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::text('lama', $data->lama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                           </div>
+                                          <div class="form-grup">
+                                           {!! Form::label('keterangan', 'Keterangan',['class' => 'col-sm-6 form-control']) !!}
+                                           {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], $data->keterangan,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                           </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
@@ -92,9 +95,9 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Delete Kelas</h5>
                                     </div>
-                                    {!! Form::open(['route' => ['kelas.destroy',$data->id],'method' => 'DELETE']) !!}
+                                    {!! Form::open(['route' => ['absensi.destroy',$data->id],'method' => 'DELETE']) !!}
                                     <div class="modal-body">
-                                        Yakin Ingin Menghapus
+                                        Yakin Ingin Menghapus Absensi {{$data->NISN}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
@@ -103,7 +106,7 @@
                                     {!! Form::close() !!}
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                   	@endforeach
                 </tbody>
               </table>

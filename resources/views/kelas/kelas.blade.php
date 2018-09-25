@@ -13,12 +13,12 @@
 			                {!! Form::open(['route' => 'kelas.index']) !!}
 			                    <div class="form-grup">
 					               {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
-					               {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					            </div>
 					
 			                    <div class="form-grup">
 					               {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
-					               {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
+					               {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					            </div>
 			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
 
@@ -63,12 +63,12 @@
                                     <div class="modal-body">
                                           <div class="form-grup">
                                          {!! Form::label('nama_kelas', 'Nama Kelas',['class' => 'col-sm-6 form-control']) !!}
-                                         {!! Form::text('nama_kelas', '' ,['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::text('nama_kelas', $data->nama_kelas ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                         </div>
                           
                                           <div class="form-grup">
                                          {!! Form::label('nama_ruang', 'Nama Ruang',['class' => 'col-sm-6 form-control']) !!}
-                                         {!! Form::text('nama_ruang', '',['class' => 'col-sm-6 form-control']) !!}
+                                         {!! Form::text('nama_ruang', $data->ruang,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                           </div>
                                     </div>
                                     <div class="modal-footer">

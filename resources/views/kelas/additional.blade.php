@@ -7,7 +7,7 @@
 <script src="{{asset('template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}} "></script>
 <script>
     $(document).ready( function () {
-        $('#example').DataTable();
+        $('#example2').DataTable();
     } );
 </script>
 @endsection
