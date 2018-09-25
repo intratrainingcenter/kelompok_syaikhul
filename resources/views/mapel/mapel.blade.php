@@ -2,9 +2,35 @@
 @extends('mapel/additional')
 @section('content')
 <div class="row">
-    @if (isset($oputput))
-    aa
-    @endif
+    <div class="col-md-6">
+
+        <div class="panel panel-default" width="50%">
+            <div class="panel-heading">
+                <h3>Tambah Mapel</h3>
+            </div>
+            <div class="panel-body">
+                {!! Form::open(['url' => '/mapel']) !!}
+				{!! Form::label('', 'Kelas'); !!}
+                {!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
+
+				<br>
+				{!! Form::label('hari', 'Hari'); !!}
+                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Hari ', 'required' => 'required', 'required' => 'required']) !!}
+				<br>
+				{!! Form::label('kode_pelajaran', 'Kode Pelajaran'); !!}
+                {!! Form::text('kode_pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Kode Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
+				<br>
+
+				{!! Form::label('', 'Pelajaran'); !!}
+                {!! Form::text('pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
+
+                <br>
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -91,34 +117,6 @@
         </div>
 
     </div>
-    <div class="col-md-6">
-
-        <div class="panel panel-default" width="50%">
-            <div class="panel-heading">
-                <h3>Tambah Piket</h3>
-            </div>
-            <div class="panel-body">
-                {!! Form::open(['url' => '/mapel']) !!}
-				{!! Form::label('', 'Kelas'); !!}
-                {!! Form::select('id_kelas', $selectkelas, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
-
-				<br>
-				{!! Form::label('hari', 'Hari'); !!}
-                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Hari ', 'required' => 'required', 'required' => 'required']) !!}
-				<br>
-				{!! Form::label('kode_pelajaran', 'Kode Pelajaran'); !!}
-                {!! Form::text('kode_pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Kode Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
-				<br>
-
-				{!! Form::label('', 'Pelajaran'); !!}
-                {!! Form::text('pelajaran', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan Pelajaran ', 'required' => 'required', 'required' => 'required']) !!}
-
-                <br>
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
+    
 </div>
 @endsection

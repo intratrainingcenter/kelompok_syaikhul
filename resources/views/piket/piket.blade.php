@@ -2,9 +2,24 @@
 @extends('piket/additional')
 @section('content')
 <div class="row">
-    @if (isset($oputput))
-    aa
-    @endif
+    <div class="col-md-6">
+
+        <div class="panel panel-default" width="50%">
+            <div class="panel-heading">
+                <h3>Tambah Piket</h3>
+            </div>
+            <div class="panel-body">
+                {!! Form::open(['url' => '/piket']) !!}
+                {!! Form::label('hari', 'Hari'); !!}
+                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket' , 'required' => 'required']) !!}
+                <br>
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+    
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -77,22 +92,6 @@
         </div>
 
     </div>
-    <div class="col-md-6">
-
-        <div class="panel panel-default" width="50%">
-            <div class="panel-heading">
-                <h3>Tambah Piket</h3>
-            </div>
-            <div class="panel-body">
-                {!! Form::open(['url' => '/piket']) !!}
-                {!! Form::label('hari', 'Hari'); !!}
-                {!! Form::text('hari', '', ['class' => 'form-control' , 'placeholder' => 'Masukkan hari Piket' , 'required' => 'required']) !!}
-                <br>
-                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
+    
 </div>
 @endsection

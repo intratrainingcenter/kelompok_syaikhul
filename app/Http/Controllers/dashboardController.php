@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jadwal_pelajaran;
-use App\kelas;
 
-class mapelController extends Controller
+use App\absen;
+use App\kelas;
+use App\datasiswa;
+use App\jadwal_pelajaran;
+
+class dashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +17,18 @@ class mapelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $data_mapel = jadwal_pelajaran::orderByDesc('created_at')->with('getkelas')->get();
-        $data_kelas = kelas::all();
+    {
+        $count_siswa = datasiswa::count();
+        $count_kelas = kelas::count();
+        $count_mapel = jadwal_pelajaran::count();
 
-        // dd($data_kelas);
-        // mendefinisikan value select kelas
-        $selectkelas = [''=>'Pilih Kelas'];
+        // mengambil data bulan ini
+        $currentMonth = date('m');
+        $count_absen = absen::whereRaw('MONTH(created_at) = ?',[$currentMonth])->count();
         
-        // mengisi value select sesuai dengan table data_kelas 
-        foreach ($data_kelas as $item) {
-            $selectkelas[$item->id] = $item->nama_kelas;
-        }
-        return view('mapel/mapel', compact('data_mapel','selectkelas'));
+        // dd($count_siswa,$count_kelas,$count_mapel,$count_alpha,$count_izin,$count_sakit);
+        
+        return view('master.content', compact('count_siswa','count_kelas','count_mapel','count_absen'));
     }
 
     /**
@@ -47,16 +49,7 @@ class mapelController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $insert = jadwal_pelajaran::create([
-            'id_kelas' => $request->id_kelas ,
-            'hari' => $request->hari ,
-            'kode_pelajaran' => $request->kode_pelajaran ,
-            'pelajaran' => $request->pelajaran ,
-            'created_at' => \Carbon\Carbon::now() 
-        ]);
-        
-        return redirect('mapel');
+        //
     }
 
     /**
@@ -90,14 +83,7 @@ class mapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = jadwal_pelajaran::find($id);
-        $update->id_kelas = $request->id_kelas;
-        $update->hari = $request->hari;
-        $update->kode_pelajaran = $request->kode_pelajaran;
-        $update->pelajaran = $request->pelajaran;
-        $update->save();
-        
-        return redirect('mapel');
+        //
     }
 
     /**
@@ -108,7 +94,6 @@ class mapelController extends Controller
      */
     public function destroy($id)
     {
-        $delete = jadwal_pelajaran::destroy($id);
-        return redirect('mapel');
+        //
     }
 }
