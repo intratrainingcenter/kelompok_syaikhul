@@ -67,28 +67,28 @@
                 </thead>
                 <tbody>
                 	<?php $no = 0;?>
-                	@foreach($data as $data)
+                	@foreach($data_student as $show_student)
                 	<?php $no++ ;?>
                 <tr>
                   <td>{{$no}}</td>
-                  <td>{{$data->showclass->nama_kelas}}</td>
-                  <td>{{$data->piket->hari}}</td>
-                  <td>{{$data->NISN}}</td>
-                  <td>{{$data->nama}}</td>
-                  <td>{{$data->jenis_kelamin}}</td>
-                  <td>{{$data->absen}}</td>
+                  <td>{{$show_student->showclass->nama_kelas}}</td>
+                  <td>{{$show_student->piket->hari}}</td>
+                  <td>{{$show_student->NISN}}</td>
+                  <td>{{$show_student->nama}}</td>
+                  <td>{{$show_student->jenis_kelamin}}</td>
+                  <td>{{$show_student->absen}}</td>
                   <td>
-                  	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$data->id}}">Edit</button>
-                  	<button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id}}">hapus</button>
+                  	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$show_student->id}}">Edit</button>
+                  	<button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$show_student->id}}">hapus</button>
                   </td>
                 </tr>
-                  <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal fade" id="edit{{$show_student->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Edit Siswa</h5>
                                     </div>
-                                      {!! Form::open(['route' => ['siswa.update',$data->id],'method' => 'PATCH']) !!}
+                                      {!! Form::open(['route' => ['siswa.update',$show_student->id],'method' => 'PATCH']) !!}
                                     <div class="modal-body">
                                          <div class="form-grup">
                                          {!! Form::label('nama_kelas', 'Nama Kelas') !!}
@@ -97,17 +97,17 @@
 
                                          <div class="form-grup">
                                          {!! Form::label('piket', 'Piket') !!}
-                                         {!! Form::select('piket', $selectpijket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
+                                         {!! Form::select('piket', $selectpicket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                                          </div>
 
                                          <div class="form-grup">
                                          {!! Form::label('NISN', 'NISN') !!}
-                                         {!! Form::text('NISN', $data->NISN ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::text('NISN', $show_student->NISN ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                           
                                           <div class="form-grup">
                                          {!! Form::label('nama', 'Nama') !!}
-                                         {!! Form::text('nama', $data->nama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::text('nama', $show_student->nama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
 
                                          <div class="form-grup">
@@ -117,7 +117,7 @@
 
                                          <div class="form-grup">
                                          {!! Form::label('absen', 'Absen') !!}
-                                         {!! Form::text('absen', $data->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::text('absen', $show_student->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                                     </div>
                                     <div class="modal-footer">
@@ -128,13 +128,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="delete{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="delete{{$show_student->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Delete Kelas</h5>
                                     </div>
-                                    {!! Form::open(['route' => ['siswa.destroy',$data->id],'method' => 'DELETE']) !!}
+                                    {!! Form::open(['route' => ['siswa.destroy',$show_student->id],'method' => 'DELETE']) !!}
                                     <div class="modal-body">
                                         Yakin Ingin Menghapus
                                     </div>

@@ -14,9 +14,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $data = kelas::all();
+        $data_class = kelas::all();
 
-        return view('kelas.kelas',compact('data'));
+        return view('kelas.kelas',compact('data_class'));
     }
 
     /**

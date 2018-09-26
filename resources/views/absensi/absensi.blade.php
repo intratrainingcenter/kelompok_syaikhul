@@ -49,34 +49,34 @@
                 </thead>
                 <tbody>
                 	<?php $no = 0;?>
-                	@foreach($data as $data)
+                	@foreach($data_absence as $show_absence)
                 	<?php $no++ ;?>
                 <tr>
                   <td>{{$no}}</td>
-                  <td>{{$data->NISN}}</td>
-                  <td>{{$data->namesiswa->nama}}</td>
-                  <td>{{$data->lama}} Hari</td>
-                  <td>{{$data->keterangan}}</td>
+                  <td>{{$show_absence->NISN}}</td>
+                  <td>{{$show_absence->namesiswa->nama}}</td>
+                  <td>{{$show_absence->lama}} Hari</td>
+                  <td>{{$show_absence->keterangan}}</td>
                   <td>
-                  	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$data->id}}">Edit</button>
-                  	<button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$data->id}}">hapus</button>
+                  	<button class="btn btn-info" data-toggle="modal" data-target="#edit{{$show_absence->id}}">Edit</button>
+                  	<button class="btn btn-danger" data-toggle="modal" data-target="#delete{{$show_absence->id}}">hapus</button>
                   </td>
                 </tr>
-                  <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal fade" id="edit{{$show_absence->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Edit Absensi NISN {{$data->NISN}}</h5>
+                                        <h5 class="modal-title">Edit Absensi NISN {{$show_absence->NISN}}</h5>
                                     </div>
-                                      {!! Form::open(['route' => ['absensi.update',$data->id],'method' => 'put']) !!}
+                                      {!! Form::open(['route' => ['absensi.update',$show_absence->id],'method' => 'put']) !!}
                                     <div class="modal-body">
                                           <div class="form-grup">
                                          {!! Form::label('lama', 'Lama') !!}
-                                         {!! Form::text('lama', $data->lama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::text('lama', $show_absence->lama,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                           </div>
                                           <div class="form-grup">
                                            {!! Form::label('keterangan', 'Keterangan') !!}
-                                           {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], $data->keterangan,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                           {!! Form::select('keterangan', ['sakit' => 'sakit', 'ijin' => 'ijin', 'alpa' => 'alpa'], $show_absence->keterangan,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                            </div>
                                     </div>
                                     <br><br><br>
@@ -88,15 +88,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="delete{{$data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="delete{{$show_absence->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Delete Kelas</h5>
                                     </div>
-                                    {!! Form::open(['route' => ['absensi.destroy',$data->id],'method' => 'DELETE']) !!}
+                                    {!! Form::open(['route' => ['absensi.destroy',$show_absence->id],'method' => 'DELETE']) !!}
                                     <div class="modal-body">
-                                        Yakin Ingin Menghapus Absensi {{$data->NISN}}
+                                        Yakin Ingin Menghapus Absensi {{$show_absence->NISN}}
                                     </div>
                                     <br><br>
                                     <div class="modal-footer">
