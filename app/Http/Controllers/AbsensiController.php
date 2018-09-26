@@ -14,10 +14,10 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $data = absen::with('namesiswa')->get();
+        $data_absence = absen::with('namesiswa')->get();
         // dd($data);
 
-        return view('absensi.absensi',compact('data'));
+        return view('absensi.absensi',compact('data_absence'));
     }
 
     /**

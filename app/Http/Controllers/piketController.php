@@ -14,9 +14,9 @@ class piketController extends Controller
      */
     public function index()
     {   
-        $data_piket = jadwal_piket::orderByDesc('created_at')->get();
+        $data_picket = jadwal_piket::orderByDesc('created_at')->get();
 
-        return view('piket/piket', compact('data_piket'));
+        return view('piket/piket', compact('data_picket'));
     }
 
     /**

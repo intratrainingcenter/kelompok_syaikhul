@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data_piket as $index => $data)
+                        @foreach ($data_picket as $index => $data)
                         <tr>
                             <td>{{$index+1}}</td>
                             <td>{{$data->hari}}</td>
