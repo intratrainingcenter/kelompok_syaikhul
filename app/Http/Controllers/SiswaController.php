@@ -16,9 +16,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $data = datasiswa::with('piket')->with('showclass')->get();
+        $data_student = datasiswa::with('piket')->with('showclass')->get();
         $data_class = kelas::all();
-        $data_pijket = jadwal_piket::all();
+        $data_picket = jadwal_piket::all();
 
         
         $selectclass = [''=>'Pilih Kelas'];
@@ -29,11 +29,11 @@ class SiswaController extends Controller
 
         $selectpijket = [''=>'Pilih Piket'];
 
-        foreach ($data_pijket as $item) {
+        foreach ($data_picket as $item) {
             $selectpijket[$item->id] = $item->hari;
         }
 
-        return view('siswa.siswa',compact('data','selectclass','selectpijket'));
+        return view('siswa.siswa',compact('data_student','selectclass','selectpicket'));
     }
 
     /**
