@@ -48,15 +48,22 @@ class mapelController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $insert = jadwal_pelajaran::create([
-            'id_kelas' => $request->id_kelas ,
-            'hari' => $request->hari ,
-            'kode_pelajaran' => $request->kode_pelajaran ,
-            'pelajaran' => $request->pelajaran ,
-            'created_at' => \Carbon\Carbon::now() 
-        ]);
-        
-        return redirect('mapel');
+        $check_kode_pelajaran = jadwal_pelajaran::where('kode_pelajaran', $request->kode_pelajaran)->doesntExist();
+        $check_nama_pelajaran = jadwal_pelajaran::where('pelajaran', $request->pelajaran)->doesntExist();
+
+        if ($check_kode_pelajaran && $check_nama_pelajaran) {
+            $insert = jadwal_pelajaran::create([
+                'id_kelas' => $request->id_kelas,
+                'hari' => $request->hari,
+                'kode_pelajaran' => $request->kode_pelajaran,
+                'pelajaran' => $request->pelajaran,
+                'created_at' => \Carbon\Carbon::now()
+            ]);
+
+            return redirect('mapel')->with('alert_success', 'Berhasil! Data Berhasil Ditambahkan');
+        } else {
+            return redirect('mapel')->with('alert_fail', 'Gagal! Data gagal Ditambahkan');
+        }
     }
 
     /**
@@ -90,6 +97,7 @@ class mapelController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $update = jadwal_pelajaran::find($id);
         $update->id_kelas = $request->id_kelas;
         $update->hari = $request->hari;
@@ -97,7 +105,11 @@ class mapelController extends Controller
         $update->pelajaran = $request->pelajaran;
         $update->save();
         
-        return redirect('mapel');
+        if ($update) {
+            return redirect('mapel')->with('alert_success', 'Berhasil! Data Berhasil DiUbah');
+        } else {
+            return redirect('mapel')->with('alert_fail', 'Gagal! Data gagal Diubah');
+        }
     }
 
     /**
@@ -109,6 +121,10 @@ class mapelController extends Controller
     public function destroy($id)
     {
         $delete = jadwal_pelajaran::destroy($id);
-        return redirect('mapel');
+        if ($delete) {
+            return redirect('mapel')->with('alert_success', 'Berhasil! Data Berhasil DiHapus');
+        } else {
+            return redirect('mapel')->with('alert_fail', 'Gagal! Data gagal DiHapus');
+        }
     }
 }

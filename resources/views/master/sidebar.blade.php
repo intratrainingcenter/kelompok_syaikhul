@@ -21,16 +21,16 @@
         </a>
     </li>
     <li>
-        <a href="/siswa">
-            <i class="fa fa-th"></i>
-            <span>siswa</span>
-        </a>
-    </li>
-    <li>
       <a href="/piket">
         <i class="fa fa-th"></i>
         <span>piket</span>
       </a>
+    </li>
+    <li>
+        <a href="/siswa">
+            <i class="fa fa-th"></i>
+            <span>siswa</span>
+        </a>
     </li>
     <li >
         <a href="/mapel">

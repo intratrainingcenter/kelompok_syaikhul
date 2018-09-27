@@ -3,6 +3,19 @@
 
 @section('content')
 	<div>
+        @if (session('alert_success'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_success')}}
+          </div>
+        </div>
+        @elseif(session('alert_fail'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_fail')}}
+          </div>
+        </div>
+      @endif
 		<h2>Data Kelas</h2>
 		<div class="col-md-6">
 			        <div class="panel panel-default" width="50%">
@@ -65,12 +78,13 @@
                                           <div class="form-grup">
                                          {!! Form::label('nama_kelas', 'Nama Kelas') !!}
                                          {!! Form::text('nama_kelas', $view_class->nama_kelas ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::hidden('id_kelas', $view_class->id ) !!}
                                         </div>
                           
                                           <div class="form-grup">
                                          {!! Form::label('nama_ruang', 'Nama Ruang') !!}
                                          {!! Form::text('nama_ruang', $view_class->ruang,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
-                                          </div>
+                                          </div><br>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>

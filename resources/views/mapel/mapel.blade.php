@@ -2,6 +2,19 @@
 @extends('mapel/additional')
 @section('content')
 <div class="row">
+    @if (session('alert_success'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_success')}}
+          </div>
+        </div>
+        @elseif(session('alert_fail'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_fail')}}
+          </div>
+        </div>
+      @endif
     <div class="col-md-6">
 
         <div class="panel panel-default" width="50%">

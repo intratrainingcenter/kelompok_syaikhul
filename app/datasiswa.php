@@ -8,10 +8,10 @@ class datasiswa extends Model
 {
     public function piket()
     {
-    	return $this->belongsTo('App\jadwal_piket','id_piket','id');
+    	return $this->belongsTo('App\jadwal_piket','id_piket','id')->withTrashed();
     }
     public function showclass()
     {
-    	return $this->belongsTo('App\kelas','id_kelas','id');
+    	return $this->belongsTo('App\kelas','id_kelas','id')->withTrashed();
     }
 }
