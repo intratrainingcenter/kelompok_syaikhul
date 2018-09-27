@@ -2,7 +2,7 @@
 @extends('siswa.additional')
 
 @section('content')
-	<div>
+	<div class="row">
         @if (session('alert_success'))
         <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
           <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -16,7 +16,6 @@
           </div>
         </div>
       @endif
-		<h2>Data Siswa</h2>
 		<div class="col-md-6">
 			        <div class="panel panel-default" width="50%">
 			            <div class="panel-heading">
@@ -60,11 +59,12 @@
 			            </div>
 			        </div>
 			    </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <!-- /.box-header -->
-            <div class="box-body">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Data Siswa</h3>
+            </div>
+            <div class="panel-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -134,6 +134,7 @@
                                          {!! Form::number('absen', $show_student->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                                     </div>
+                                    <br><br><br>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                       {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
@@ -164,12 +165,8 @@
                 </tbody>
               </table>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
          </div>
-	</div>
-
 	</div>
 
 
