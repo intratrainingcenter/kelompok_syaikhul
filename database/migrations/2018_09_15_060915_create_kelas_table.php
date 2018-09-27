@@ -18,6 +18,7 @@ class CreateKelasTable extends Migration
             $table->string('nama_kelas', 30);
             $table->string('ruang', 30);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

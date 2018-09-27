@@ -36,7 +36,7 @@
                          <br>
                          <div class="form-grup">
 					               {!! Form::label('NISN', 'NISN') !!}
-					               {!! Form::text('NISN', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+					               {!! Form::number('NISN', '' ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
 					               </div>
                                    <br><br>
 			                    <div class="form-grup">
@@ -51,7 +51,7 @@
                          <br><br>
                          <div class="form-grup">
 					               {!! Form::label('absen', 'Absen') !!}
-					               {!! Form::text('absen', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+					               {!! Form::number('absen', '',['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                    </div>
                                    <br><br>
 			                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
@@ -105,7 +105,7 @@
                                     <div class="modal-body">
                                       <div class="form-grup">
                                          {!! Form::label('NISN', 'NISN') !!}
-                                         {!! Form::text('NISN', $show_student->NISN ,['class' => 'col-sm-6 form-control', 'disabled' => 'disabled']) !!}
+                                         {!! Form::number('NISN', $show_student->NISN ,['class' => 'col-sm-6 form-control', 'disabled' => 'disabled']) !!}
                                          </div>
                                          <div class="form-grup">
                                          {!! Form::label('nama_kelas', 'Nama Kelas') !!}
@@ -131,7 +131,7 @@
 
                                          <div class="form-grup">
                                          {!! Form::label('absen', 'Absen') !!}
-                                         {!! Form::text('absen', $show_student->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
+                                         {!! Form::number('absen', $show_student->absen,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
                                          </div>
                                     </div>
                                     <div class="modal-footer">

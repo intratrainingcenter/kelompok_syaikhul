@@ -17,6 +17,7 @@ class CreateJadwalPiketsTable extends Migration
             $table->increments('id');
             $table->string('hari', 30);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,7 +20,7 @@ class SiswaController extends Controller
         $data_class = kelas::all();
         $data_picket = jadwal_piket::all();
 
-        
+        // dd($data_class);
         $selectclass = [''=>'Pilih Kelas'];
 
         foreach ($data_class as $item) {
@@ -77,40 +77,19 @@ class SiswaController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         // dd($request);
-
-
         $update = datasiswa::find($id);
         $update->id_kelas = $request->id_kelas;
         $update->id_piket = $request->piket;
@@ -125,12 +104,7 @@ class SiswaController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $delete = datasiswa::destroy($id);
