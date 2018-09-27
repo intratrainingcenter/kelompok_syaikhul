@@ -37,12 +37,19 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $insert = new kelas();
-        $insert->nama_kelas = $request->nama_kelas;
-        $insert->ruang     = $request->nama_ruang;
-        $insert->save();
+        $check_kelas = kelas::where('nama_kelas', $request->nama_kelas)->doesntExist();
+        $check_ruang = kelas::where('ruang', $request->ruang)->doesntExist();
 
-        return redirect('kelas');
+        if ($check_kelas && $check_ruang){
+            $insert = new kelas();
+            $insert->nama_kelas = $request->nama_kelas;
+            $insert->ruang = $request->nama_ruang;
+            $insert->save();
+
+            return redirect('kelas')->with('alert_success', 'Berhasil! Data Berhasil Ditambahkan');
+        } else {
+            return redirect('kelas')->with('alert_fail', 'Gagal! Data gagal Ditambahkan');
+        }
     }
 
     /**
@@ -76,12 +83,17 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $update = kelas::find($id);
         $update->nama_kelas = $request->nama_kelas;
         $update->ruang = $request->nama_ruang;
         $update->save();
         
-        return redirect('kelas');
+        if ($update) {
+            return redirect('kelas')->with('alert_success', 'Berhasil! Data Berhasil DiUbah');
+        } else {
+            return redirect('kelas')->with('alert_fail', 'Gagal! Data gagal Diubah');
+        }
     }
 
     /**
@@ -93,6 +105,10 @@ class KelasController extends Controller
     public function destroy($id)
     {
         $delete = kelas::destroy($id);
-        return redirect('kelas');
+        if ($delete) {
+            return redirect('kelas')->with('alert_success', 'Berhasil! Data Berhasil DiHapus');
+        } else {
+            return redirect('kelas')->with('alert_fail', 'Gagal! Data gagal DiHapus');
+        }
     }
 }

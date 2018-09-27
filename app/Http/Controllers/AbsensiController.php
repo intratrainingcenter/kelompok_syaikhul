@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\absen;
+use App\datasiswa;
 
 class AbsensiController extends Controller
 {
@@ -38,13 +39,20 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        $insert = new absen();
-        $insert->NISN   = $request->NISN;
-        $insert->lama       = $request->lama;
-        $insert->keterangan = $request->keterangan;
-        $insert->save();
+        $check_absensi =  datasiswa::where('NISN', $request->NISN)->exists();
+        // dd($check);
+        if ($check_absensi == true){
+            $insert = new absen();
+            $insert->NISN = $request->NISN;
+            $insert->lama = $request->lama;
+            $insert->keterangan = $request->keterangan;
+            $insert->save();
 
-        return redirect('absensi');
+            return redirect('absensi')->with('alert_success', 'Berhasil! Data Berhasil Ditambahkan');
+        }else{
+            return redirect('absensi')->with('alert_fail', 'Gagal! Data gagal Ditambahkan');
+        }
+
     }
 
     /**
@@ -84,8 +92,12 @@ class AbsensiController extends Controller
         $update->lama       = $request->lama;
         $update->keterangan = $request->keterangan;
         $update->save();
-        
-        return redirect('absensi');
+
+        if ($update) {
+            return redirect('absensi')->with('alert_success', 'Berhasil! Data Berhasil DiUbah');
+        } else {
+            return redirect('absensi')->with('alert_fail', 'Gagal! Data gagal Diubah');
+        }
     }
 
     /**
@@ -97,6 +109,11 @@ class AbsensiController extends Controller
     public function destroy($id)
     {
         $delete = absen::destroy($id);
-        return redirect('absensi');
+
+        if ($delete) {
+            return redirect('absensi')->with('alert_success', 'Berhasil! Data Berhasil DiHapus');
+        } else {
+            return redirect('absensi')->with('alert_fail', 'Gagal! Data gagal DiHapus');
+        }
     }
 }

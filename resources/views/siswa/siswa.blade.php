@@ -3,6 +3,19 @@
 
 @section('content')
 	<div>
+        @if (session('alert_success'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_success')}}
+          </div>
+        </div>
+        @elseif(session('alert_fail'))
+        <div style="position: absolute; z-index: 999; right: -10px; " class="col-md-6 notifberhasil">
+          <div class="notif alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{session('alert_fail')}}
+          </div>
+        </div>
+      @endif
 		<h2>Data Siswa</h2>
 		<div class="col-md-6">
 			        <div class="panel panel-default" width="50%">
@@ -18,7 +31,7 @@
                          <br>
                          <div class="form-grup">
                          {!! Form::label('piket', 'Piket') !!}
-                         {!! Form::select('piket', $selectpijket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
+                         {!! Form::select('piket', $selectpicket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                          </div>
                          <br>
                          <div class="form-grup">
@@ -90,6 +103,10 @@
                                     </div>
                                       {!! Form::open(['route' => ['siswa.update',$show_student->id],'method' => 'PATCH']) !!}
                                     <div class="modal-body">
+                                      <div class="form-grup">
+                                         {!! Form::label('NISN', 'NISN') !!}
+                                         {!! Form::text('NISN', $show_student->NISN ,['class' => 'col-sm-6 form-control', 'disabled' => 'disabled']) !!}
+                                         </div>
                                          <div class="form-grup">
                                          {!! Form::label('nama_kelas', 'Nama Kelas') !!}
                                           {!! Form::select('id_kelas', $selectclass, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
@@ -100,10 +117,7 @@
                                          {!! Form::select('piket', $selectpicket, null, [ 'class' => 'form-control', 'required' => 'required', 'required' => 'required']); !!}
                                          </div>
 
-                                         <div class="form-grup">
-                                         {!! Form::label('NISN', 'NISN') !!}
-                                         {!! Form::text('NISN', $show_student->NISN ,['class' => 'col-sm-6 form-control', 'required' => 'required']) !!}
-                                         </div>
+                                         
                           
                                           <div class="form-grup">
                                          {!! Form::label('nama', 'Nama') !!}

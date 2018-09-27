@@ -27,10 +27,10 @@ class SiswaController extends Controller
             $selectclass[$item->id] = $item->nama_kelas;
         }
 
-        $selectpijket = [''=>'Pilih Piket'];
+        $selectpicket = [''=>'Pilih Piket'];
 
         foreach ($data_picket as $item) {
-            $selectpijket[$item->id] = $item->hari;
+            $selectpicket[$item->id] = $item->hari;
         }
 
         return view('siswa.siswa',compact('data_student','selectclass','selectpicket'));
@@ -54,16 +54,27 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $insert = new datasiswa();
-        $insert->id_kelas       = $request->id_kelas;
-        $insert->id_piket       = $request->piket;
-        $insert->NISN           = $request->NISN;
-        $insert->nama           = $request->nama;
-        $insert->jenis_kelamin  = $request->jk;
-        $insert->absen          = $request->absen;
-        $insert->save();
+        $check_nisn_and_absen = datasiswa::where('NISN', $request->NISN)->where('absen', $request->absen)->doesntExist();
+        $check_kelas = datasiswa::where('id_kelas', $request->id_kelas)->doesntExist();
 
-        return redirect('siswa');
+
+        if($check_nisn_and_absen && $check_kelas){
+            $insert = new datasiswa();
+            $insert->id_kelas = $request->id_kelas;
+            $insert->id_piket = $request->piket;
+            $insert->NISN = $request->NISN;
+            $insert->nama = $request->nama;
+            $insert->jenis_kelamin = $request->jk;
+            $insert->absen = $request->absen;
+            $insert->save();
+
+            return redirect('siswa')->with('alert_success', 'Berhasil! Data Berhasil Ditambahkan');
+        } else {
+            return redirect('siswa')->with('alert_fail', 'Gagal! Data gagal Ditambahkan');
+        }
+        
+
+        
     }
 
     /**
@@ -98,16 +109,20 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-        $update = datasiswa::find($id);
-        $update->id_kelas       = $request->id_kelas;
-        $update->id_piket       = $request->piket;
-        $update->NISN           = $request->NISN;
-        $update->nama           = $request->nama;
-        $update->jenis_kelamin  = $request->jk;
-        $update->absen          = $request->absen;
-        $update->save();
 
-        return redirect('siswa');
+
+        $update = datasiswa::find($id);
+        $update->id_kelas = $request->id_kelas;
+        $update->id_piket = $request->piket;
+        $update->nama = $request->nama;
+        $update->jenis_kelamin = $request->jk;
+        $update->absen = $request->absen;
+        $update->save();
+        if ($update) {
+        return redirect('siswa')->with('alert_success', 'Berhasil! Data Berhasil DiUbah');
+        } else {
+            return redirect('siswa')->with('alert_fail', 'Gagal! Data gagal Diubah');
+        }
     }
 
     /**
@@ -119,6 +134,10 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         $delete = datasiswa::destroy($id);
-        return redirect('siswa');
+        if ($delete) {
+            return redirect('siswa')->with('alert_success', 'Berhasil! Data Berhasil DiHapus');
+        } else {
+            return redirect('siswa')->with('alert_fail', 'Gagal! Data gagal DiHapus');
+        }
     }
 }
