@@ -54,11 +54,11 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $check_nisn_and_absen = datasiswa::where('NISN', $request->NISN)->where('absen', $request->absen)->doesntExist();
-        $check_kelas = datasiswa::where('id_kelas', $request->id_kelas)->doesntExist();
+        $check_nisn = datasiswa::where('NISN', $request->NISN)->doesntExist();
+        $check_kelas_and_absen = datasiswa::where('id_kelas', $request->id_kelas)->where('absen', $request->absen)->doesntExist();
 
 
-        if($check_nisn_and_absen && $check_kelas){
+        if($check_nisn && $check_kelas_and_absen){
             $insert = new datasiswa();
             $insert->id_kelas = $request->id_kelas;
             $insert->id_piket = $request->piket;
